@@ -8,6 +8,7 @@ public class Blah {
 
 	@RequestMapping("/blah")
 	String home() {
+		System.out.println("blah message");
 		return "blah";
 	}
 }
