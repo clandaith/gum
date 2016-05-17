@@ -2,8 +2,9 @@ package com.clandaith.gum.flyway;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.clandaith.gum.repositories.PersonRepository;
 
 @SpringBootApplication
 public class SampleFlywayApplication implements CommandLineRunner {
@@ -15,9 +16,4 @@ public class SampleFlywayApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.err.println("jh gjhg jhg    " + this.repository.findAll());
 	}
-
-	public static void mainBroken(String[] args) throws Exception {
-		SpringApplication.run(SampleFlywayApplication.class, args);
-	}
-
 }

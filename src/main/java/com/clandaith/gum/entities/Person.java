@@ -1,4 +1,4 @@
-package com.clandaith.gum.flyway;
+package com.clandaith.gum.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
