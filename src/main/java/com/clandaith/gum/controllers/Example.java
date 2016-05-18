@@ -2,6 +2,7 @@ package com.clandaith.gum.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,11 @@ import com.google.common.collect.Lists;
 public class Example {
 
 	private ProductService productService;
+
+	@Autowired
+	public void setProductService(ProductService productService) {
+		this.productService = productService;
+	}
 
 	@RequestMapping("/example")
 	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
