@@ -13,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 
-import com.clandaith.gum.SpringBootWebApplication;
 import com.clandaith.gum.controllers.FoobarController;
 import com.clandaith.gum.entities.Foobar;
 import com.clandaith.gum.services.FoobarService;
@@ -37,6 +36,9 @@ public class FooBarControllerTest {
 	public void shouldCreateUser() throws Exception {
 		final Foobar savedFoobar = stubServiceToReturnStoredFoobar();
 		final Foobar foobar = new Foobar();
+		foobar.setFirstName("firstname");
+		foobar.setLastName("lastname");
+
 		Foobar returnedFoobar = foobarController.saveFoobarOrig(foobar);
 		// verify foobar was passed to FoobarService
 		verify(foobarService, times(1)).saveFoobar(foobar);
