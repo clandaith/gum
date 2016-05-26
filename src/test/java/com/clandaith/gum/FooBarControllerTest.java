@@ -36,10 +36,10 @@ public class FooBarControllerTest {
 	public void shouldCreateUser() throws Exception {
 		final Foobar savedFoobar = stubServiceToReturnStoredFoobar();
 		final Foobar foobar = new Foobar();
-		foobar.setFirstName("firstname");
-		foobar.setLastName("lastname");
+		foobar.setFirstName("firstName");
+		foobar.setLastName("lastName");
 
-		Foobar returnedFoobar = foobarController.saveFoobarOrig(foobar);
+		Foobar returnedFoobar = foobarController.saveFoobar(foobar);
 		// verify foobar was passed to FoobarService
 		verify(foobarService, times(1)).saveFoobar(foobar);
 		assertEquals("Returned foobar should come from the service", savedFoobar, returnedFoobar);

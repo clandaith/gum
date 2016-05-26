@@ -33,14 +33,6 @@ public class FoobarController {
 		return foobarService.saveFoobar(foobar);
 	}
 
-	@RequestMapping(value = "/foobarOrig", method = RequestMethod.POST)
-	public Foobar saveFoobarOrig(Foobar foobar) {
-		log.info("saveFoobarOrig");
-		log.info("First name : " + foobar.getFirstName());
-		log.info("Last name  : " + foobar.getLastName());
-		return foobar; // foobarService.saveFoobar(foobar);
-	}
-
 	@RequestMapping(value = "/foobar", method = RequestMethod.GET)
 	public List<Foobar> getAll() {
 		log.info("getAll");
