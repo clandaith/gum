@@ -11,40 +11,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.clandaith.gum.entities.Foobar;
-import com.clandaith.gum.services.FoobarService;
+import com.clandaith.gum.entities.User;
+import com.clandaith.gum.services.UserService;
 
 @RestController
 public class UserController {
 	private final Logger log = Logger.getLogger(UserController.class);
 
-	private FoobarService foobarService;
+	private UserService userService;
 
 	@Autowired
-	public void setFoobarService(FoobarService foobarService) {
-		this.foobarService = foobarService;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/foobar", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Foobar saveFoobar(@RequestBody Foobar foobar) {
-		log.info("saveFoobar");
-		log.info("First name : " + foobar.getFirstName());
-		log.info("Last name : " + foobar.getLastName());
-		return foobarService.saveFoobar(foobar);
+	@RequestMapping(value = "/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public User saveUser(@RequestBody User user) {
+		log.info("saveUser");
+		return userService.saveUser(user);
 	}
 
-	@RequestMapping(value = "/foobar", method = RequestMethod.GET)
-	public List<Foobar> getAll() {
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public List<User> getAll() {
 		log.info("getAll");
-		return foobarService.listAllFoobars();
+		return userService.getAllUsers();
 	}
 
-	@RequestMapping(value = "/foobar/{id}")
-	public Foobar getOne(@PathVariable Integer id) {
+	@RequestMapping(value = "/user/{id}")
+	public User getOne(@PathVariable Integer id) {
 		log.info("getOne");
 
-		Foobar foobar = foobarService.getFoobarById(id);
+		User user = userService.getUserById(id);
 
-		return foobar;
+		return user;
 	}
 }

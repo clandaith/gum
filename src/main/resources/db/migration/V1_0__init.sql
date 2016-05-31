@@ -73,7 +73,7 @@ CREATE TABLE users
 	,description VARCHAR(4096)  NULL 
 	,CONSTRAINT PK_users_username PRIMARY KEY (username)
 );
-create index users_index_username on users(username)
+create index users_index_username on users(username);
 
 
 
