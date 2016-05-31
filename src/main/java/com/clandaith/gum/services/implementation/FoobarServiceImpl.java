@@ -1,4 +1,4 @@
-package com.clandaith.gum.services;
+package com.clandaith.gum.services.implementation;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.clandaith.gum.entities.Foobar;
 import com.clandaith.gum.repositories.FoobarRepository;
+import com.clandaith.gum.services.FoobarService;
 import com.google.common.collect.Lists;
 
 @Service

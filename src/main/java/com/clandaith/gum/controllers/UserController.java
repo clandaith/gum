@@ -15,8 +15,8 @@ import com.clandaith.gum.entities.Foobar;
 import com.clandaith.gum.services.FoobarService;
 
 @RestController
-public class FoobarController {
-	private final Logger log = Logger.getLogger(FoobarController.class);
+public class UserController {
+	private final Logger log = Logger.getLogger(UserController.class);
 
 	private FoobarService foobarService;
 

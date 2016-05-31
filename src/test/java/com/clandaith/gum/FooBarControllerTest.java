@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 
-import com.clandaith.gum.controllers.FoobarController;
+import com.clandaith.gum.controllers.UserController;
 import com.clandaith.gum.entities.Foobar;
 import com.clandaith.gum.services.FoobarService;
 
@@ -24,11 +24,11 @@ public class FooBarControllerTest {
 	@Mock
 	private FoobarService foobarService;
 
-	private FoobarController foobarController;
+	private UserController foobarController;
 
 	@Before
 	public void setUp() {
-		foobarController = new FoobarController();
+		foobarController = new UserController();
 		foobarController.setFoobarService(foobarService);
 	}
 
