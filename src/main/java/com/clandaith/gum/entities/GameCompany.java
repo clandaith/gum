@@ -29,11 +29,11 @@ public class GameCompany {
 	private Integer phoneNumber;
 	private String website;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_added")
 	private Date dateAdded;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_updated")
 	private Date dateUpdated;
 

@@ -35,11 +35,11 @@ public class User {
 	@Column(name = "phone_number")
 	private Integer phoneNumber;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_added")
 	private Date dateAdded;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_updated")
 	private Date dateUpdated;
 

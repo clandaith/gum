@@ -10,15 +10,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.clandaith.gum.controllers.UserController;
 import com.clandaith.gum.entities.User;
 import com.clandaith.gum.services.UserService;
 
-@RunWith(MockitoJUnitRunner.class)
-// @RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(SpringBootWebApplication.class)
 public class UserControllerTest {
 	@Mock

@@ -23,11 +23,11 @@ public class GameSystem {
 	private String name;
 	private String website;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_added")
 	private Date dateAdded;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_updated")
 	private Date dateUpdated;
 	private String description;

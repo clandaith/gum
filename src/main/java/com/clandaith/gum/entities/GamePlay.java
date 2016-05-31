@@ -24,12 +24,12 @@ public class GamePlay {
 	@Column(name = "game_system_id")
 	private Integer gameSystemId;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_played")
 	private Date datePlayed;
 
 	@Column(name = "opponent_id")
-	private String opponentId;
+	private Integer opponentId;
 
 	private boolean winner;
 
@@ -65,11 +65,11 @@ public class GamePlay {
 		this.datePlayed = datePlayed;
 	}
 
-	public String getOpponentId() {
+	public Integer getOpponentId() {
 		return opponentId;
 	}
 
-	public void setOpponentId(String opponentId) {
+	public void setOpponentId(Integer opponentId) {
 		this.opponentId = opponentId;
 	}
 
