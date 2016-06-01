@@ -30,10 +30,10 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findOne(id);
 	}
 
-	// @Override
-	// public User getUserByUsername(String username) {
-	// return null;
-	// }
+	@Override
+	public User getUserByUsername(String username) {
+		return null;
+	}
 
 	@Override
 	@Transactional

@@ -19,7 +19,7 @@ create index game_plays_index_opponent_id on game_plays(opponent_id);
 CREATE TABLE game_company
 (
 	id SERIAL not null primary key
-	,name VARCHAR(250) NOT NULL 
+	,name VARCHAR(250) unique NOT NULL 
 	,address1 VARCHAR(250) NOT NULL 
 	,address2 VARCHAR(250)  NULL 
 	,city VARCHAR(250) NOT NULL 
@@ -28,8 +28,8 @@ CREATE TABLE game_company
 	,country VARCHAR(250) NOT NULL 
 	,phone_number INTEGER NOT NULL 
 	,website VARCHAR(500) NOT NULL 
-	,date_added TIMESTAMP NOT NULL 
-	,date_updated TIMESTAMP NOT NULL 
+	,date_added TIMESTAMP NOT NULL
+	,date_updated TIMESTAMP NOT NULL
 	,contact_name VARCHAR(250) NOT NULL 
 	,contact_phone_number INTEGER NOT NULL 
 	,contact_email_address VARCHAR(250) NOT NULL 
@@ -42,11 +42,11 @@ CREATE TABLE game_system
 (
 	id SERIAL not null primary key
 	,game_company_id INTEGER NOT NULL 
-	,name VARCHAR(250) NOT NULL 
-	,website VARCHAR(500)  NULL 
-	,date_added TIMESTAMP NOT NULL 
-	,date_updated TIMESTAMP NOT NULL 
-	,description VARCHAR(4096)  NULL 
+	,name VARCHAR(250) unique NOT NULL 
+	,website VARCHAR(500) NOT NULL 
+	,date_added TIMESTAMP NOT NULL
+	,date_updated TIMESTAMP NOT NULL
+	,description VARCHAR(4096)  NOT NULL 
 );
 
 
@@ -55,9 +55,9 @@ CREATE TABLE game_system
 CREATE TABLE users
 (
 	id SERIAL not null primary key
-	,username VARCHAR(250) NOT NULL 
-	,first_name VARCHAR(250)  NULL 
-	,last_name VARCHAR(250)  NULL 
+	,username VARCHAR(250) unique NOT NULL 
+	,first_name VARCHAR(250)  NOT NULL 
+	,last_name VARCHAR(250)  NOT NULL 
 	,address1 VARCHAR(250)  NULL 
 	,address2 VARCHAR(250)  NULL 
 	,city VARCHAR(250)  NULL 
@@ -65,9 +65,9 @@ CREATE TABLE users
 	,zip VARCHAR(250)  NULL 
 	,country VARCHAR(250)  NULL 
 	,phone_number INTEGER  NULL 
-	,date_added TIMESTAMP NOT NULL 
-	,date_updated TIMESTAMP NOT NULL 
-	,email_address VARCHAR(250)  NULL 
+	,date_added TIMESTAMP NOT NULL
+	,date_updated TIMESTAMP NOT NULL
+	,email_address VARCHAR(250) unique  NOT NULL 
 	,description VARCHAR(4096)  NULL 
 );
 create index users_index_username on users(username);

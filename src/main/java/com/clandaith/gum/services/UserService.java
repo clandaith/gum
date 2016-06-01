@@ -9,7 +9,7 @@ public interface UserService {
 
 	User getUserById(Integer id);
 
-	// User getUserByUsername(String username);
+	User getUserByUsername(String username);
 
 	User saveUser(User user);
 

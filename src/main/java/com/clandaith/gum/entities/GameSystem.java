@@ -25,11 +25,11 @@ public class GameSystem {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_added")
-	private Date dateAdded;
+	private Date dateAdded = new Date();
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_updated")
-	private Date dateUpdated;
+	private Date dateUpdated = new Date();
 	private String description;
 
 	public Integer getId() {

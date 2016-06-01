@@ -31,11 +31,11 @@ public class GameCompany {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_added")
-	private Date dateAdded;
+	private Date dateAdded = new Date();
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_updated")
-	private Date dateUpdated;
+	private Date dateUpdated = new Date();
 
 	@Column(name = "contact_name")
 	private String contactName;
