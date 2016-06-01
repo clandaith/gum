@@ -33,13 +33,13 @@ public class GamePlayController {
 
 	@RequestMapping(value = "/gameplay", method = RequestMethod.GET)
 	public List<GamePlay> getAll() {
-		LOGGER.info("getAll");
+		LOGGER.info("get all game plays");
 		return gamePlayService.getAllGamePlays();
 	}
 
 	@RequestMapping(value = "/gameplay/{id}")
 	public GamePlay getOne(@PathVariable Integer id) {
-		LOGGER.info("getOne");
+		LOGGER.info("get one game play: " + id);
 
 		GamePlay gameCompany = gamePlayService.getGamePlayById(id);
 

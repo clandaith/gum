@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "game_company")
+@Table(name = "game_companies")
 public class GameCompany {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,7 +41,7 @@ public class GameCompany {
 	private String contactName;
 
 	@Column(name = "contact_phone_number")
-	private Integer contactPhoneNumber;
+	private Long contactPhoneNumber;
 
 	@Column(name = "contact_email_address")
 	private String contactEmailAddress;
@@ -150,11 +150,11 @@ public class GameCompany {
 		this.contactName = contactName;
 	}
 
-	public Integer getContactPhoneNumber() {
+	public Long getContactPhoneNumber() {
 		return contactPhoneNumber;
 	}
 
-	public void setContactPhoneNumber(Integer contactPhoneNumber) {
+	public void setContactPhoneNumber(Long contactPhoneNumber) {
 		this.contactPhoneNumber = contactPhoneNumber;
 	}
 

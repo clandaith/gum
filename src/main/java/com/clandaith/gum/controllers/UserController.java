@@ -27,19 +27,19 @@ public class UserController {
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public User saveUser(@RequestBody User user) {
-		LOGGER.info("saveUser");
+		LOGGER.info("save user");
 		return userService.saveUser(user);
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public List<User> getAll() {
-		LOGGER.info("getAll");
+		LOGGER.info("get all users");
 		return userService.getAllUsers();
 	}
 
 	@RequestMapping(value = "/user/{id}")
 	public User getOne(@PathVariable Integer id) {
-		LOGGER.info("getOne");
+		LOGGER.info("get one user: " + id);
 
 		User user = userService.getUserById(id);
 

@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "game_system")
+@Table(name = "game_systems")
 public class GameSystem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

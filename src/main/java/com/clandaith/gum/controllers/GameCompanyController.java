@@ -33,13 +33,13 @@ public class GameCompanyController {
 
 	@RequestMapping(value = "/gamecompany", method = RequestMethod.GET)
 	public List<GameCompany> getAll() {
-		LOGGER.info("getAll");
+		LOGGER.info("get all game companies");
 		return gameCompanyService.getAllGameCompanies();
 	}
 
 	@RequestMapping(value = "/gamecompany/{id}")
 	public GameCompany getOne(@PathVariable Integer id) {
-		LOGGER.info("getOne");
+		LOGGER.info("get one game company");
 
 		GameCompany gameCompany = gameCompanyService.getGameCompanyById(id);
 

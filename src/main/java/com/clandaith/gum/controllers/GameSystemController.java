@@ -26,20 +26,20 @@ public class GameSystemController {
 	}
 
 	@RequestMapping(value = "/gamesystem", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public GameSystem saveGamePlaySystem(@RequestBody GameSystem gameSystem) {
+	public GameSystem saveGameSystem(@RequestBody GameSystem gameSystem) {
 		LOGGER.info("save game system");
 		return gameSystemService.saveGameSystem(gameSystem);
 	}
 
 	@RequestMapping(value = "/gamesystem", method = RequestMethod.GET)
 	public List<GameSystem> getAll() {
-		LOGGER.info("getAll");
+		LOGGER.info("get all game systems");
 		return gameSystemService.getAllGameSystems();
 	}
 
 	@RequestMapping(value = "/gamesystem/{id}", method = RequestMethod.GET)
 	public GameSystem getOne(@PathVariable Integer id) {
-		LOGGER.info("getOne");
+		LOGGER.info("get one game system");
 		GameSystem gameCompany = gameSystemService.getGameSystemById(id);
 		return gameCompany;
 	}
