@@ -16,30 +16,30 @@ import com.clandaith.gum.services.UserService;
 
 @RestController
 public class UserController {
-	private final Logger log = Logger.getLogger(UserController.class);
+	private static final Logger LOGGER = Logger.getLogger(UserController.class);
 
 	private UserService userService;
 
 	@Autowired
-	public void setUserService(UserService userService) {
+	public void setService(UserService userService) {
 		this.userService = userService;
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public User saveUser(@RequestBody User user) {
-		log.info("saveUser");
+		LOGGER.info("saveUser");
 		return userService.saveUser(user);
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public List<User> getAll() {
-		log.info("getAll");
+		LOGGER.info("getAll");
 		return userService.getAllUsers();
 	}
 
 	@RequestMapping(value = "/user/{id}")
 	public User getOne(@PathVariable Integer id) {
-		log.info("getOne");
+		LOGGER.info("getOne");
 
 		User user = userService.getUserById(id);
 

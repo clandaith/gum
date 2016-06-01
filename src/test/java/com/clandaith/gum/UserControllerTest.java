@@ -28,7 +28,7 @@ public class UserControllerTest {
 	@Before
 	public void setUp() {
 		userController = new UserController();
-		userController.setUserService(userService);
+		userController.setService(userService);
 	}
 
 	@Test
