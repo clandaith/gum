@@ -30,7 +30,7 @@ public class GamePlay {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_played")
-	private Date datePlayed;
+	private Date datePlayed = new Date();
 
 	@Column(name = "opponent_id")
 	private Integer opponentId;
