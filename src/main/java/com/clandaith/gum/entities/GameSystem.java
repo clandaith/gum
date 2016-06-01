@@ -1,15 +1,22 @@
 package com.clandaith.gum.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "game_systems")
@@ -31,6 +38,14 @@ public class GameSystem {
 	@Column(name = "date_updated")
 	private Date dateUpdated = new Date();
 	private String description;
+
+	@OneToMany(mappedBy = "gameSystem", cascade = CascadeType.ALL)
+	private List<GamePlay> gamePlays;
+
+	@JsonIgnore
+	@ManyToOne()
+	@JoinColumn(name = "game_company_id", insertable = false, updatable = false)
+	private GameCompany gameCompany;
 
 	public Integer getId() {
 		return id;
@@ -86,5 +101,21 @@ public class GameSystem {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<GamePlay> getGamePlays() {
+		return gamePlays;
+	}
+
+	public void setGamePlays(List<GamePlay> gamePlays) {
+		this.gamePlays = gamePlays;
+	}
+
+	public GameCompany getGameCompany() {
+		return gameCompany;
+	}
+
+	public void setGameCompany(GameCompany gameCompany) {
+		this.gameCompany = gameCompany;
 	}
 }

@@ -90,17 +90,83 @@ ALTER TABLE game_plays ADD CONSTRAINT FK_game_plays_opponent_id_users_id FOREIGN
 ALTER TABLE game_plays ADD CONSTRAINT FK_game_plays_game_systems_id_game_systems_id FOREIGN KEY (game_system_id) REFERENCES game_systems(id) ON DELETE CASCADE;
 
 -- Default Data
+
+--++++++++++++++++++++++++++++++++++++++++++
+-- Users
 insert into users (username, first_name, last_name, address1, address2, city, state, zip, phone_number, country, email_address, description, date_added, date_updated) values 
 ('clandaith', 'Troy', 'Davidson', '1874 S 900 E', '', 'Bountiful', 'UT', '84010', 8016631460, 'USA', 'clandaith@gmail.com', 'desc', now(), now());
 
+insert into users (username, first_name, last_name, address1, address2, city, state, zip, phone_number, country, email_address, description, date_added, date_updated) values 
+('test', 'Test', 'User', '123 Main St', 'Apt 1', 'NSL', 'UT', '84511', 8015558888, 'USA', 'test@clandaith.com', 'other desc', now(), now());
+
+--++++++++++++++++++++++++++++++++++++++++++
+-- Game Companies
 insert into game_companies (name, address1, address2, city, state, zip, country, phone_number, website,contact_name, 
 contact_phone_number, contact_email_address, date_added, date_updated ) values
 ('Test Company', '123 Any St', 'Suite A', 'Any Town', 'Any State', 'A4R 22Z', 'UK', 8015551212, 'www.clandaith.com', 'Test Contact',
  8015551212, 'contactemail@clandaith.com', now(), now());
 
+insert into game_companies (name, address1, address2, city, state, zip, country, phone_number, website,contact_name, 
+contact_phone_number, contact_email_address, date_added, date_updated ) values
+('Other Company', '555 asdfa', '', 'Somewhere', 'Blah', '99999', 'CA', 8015559999, 'foobar', 'Another Contact',
+ 8015559999, 'blah', now(), now());
+
+--++++++++++++++++++++++++++++++++++++++++++
+-- Game Systems
 insert into game_systems (game_company_id, name, website, date_added, date_updated, description) values 
 ((select id from game_companies where name = 'Test Company'), 'Test Game', 'some website', now(), now(), 'Some description');
 
+insert into game_systems (game_company_id, name, website, date_added, date_updated, description) values 
+((select id from game_companies where name = 'Test Company'), 'Another Game', 'some website 2', now(), now(), 'Some description 2');
+
+insert into game_systems (game_company_id, name, website, date_added, date_updated, description) values 
+((select id from game_companies where name = 'Other Company'), 'Awesome Game', 'some website 3', now(), now(), 'Some description 3');
+
+--++++++++++++++++++++++++++++++++++++++++++
+-- Game Plays
 insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
 ((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Test Game'), now(), null, 'true') ;
 
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Awesome Game'), now(), null, 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'test'), (select id from game_systems where name = 'Another Game'), now(), null, 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'test'), (select id from game_systems where name = 'Another Game'), now(), null, 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'test'), (select id from game_systems where name = 'Another Game'), now(), null, 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'test'), (select id from game_systems where name = 'Test Game'), now(), (select id from users where username = 'clandaith'), 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'test'), (select id from game_systems where name = 'Another Game'), now(), null, 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'test'), (select id from game_systems where name = 'Another Game'), now(), null, 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Awesome Game'), now(), (select id from users where username = 'test'), 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Awesome Game'), now(), (select id from users where username = 'test'), 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Another Game'), now(), (select id from users where username = 'test'), 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Another Game'), now(), (select id from users where username = 'test'), 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Another Game'), now(), (select id from users where username = 'test'), 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Another Game'), now(), (select id from users where username = 'test'), 'true') ;
+
+insert into game_plays (user_id, game_system_id, date_played, opponent_id, winner) values 
+((select id from users where username = 'clandaith'), (select id from game_systems where name = 'Another Game'), now(), (select id from users where username = 'test'), 'true') ;
+
+--++++++++++++++++++++++++++++++++++++++++++

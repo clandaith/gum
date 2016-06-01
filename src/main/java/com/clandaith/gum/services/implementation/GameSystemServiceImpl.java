@@ -31,7 +31,7 @@ public class GameSystemServiceImpl implements GameSystemService {
 
 	@Override
 	public GameSystem saveGameSystem(GameSystem GameSystem) {
-		return null;
+		return gameSystemRepository.save(GameSystem);
 	}
 
 	@Override

@@ -1,12 +1,15 @@
 package com.clandaith.gum.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,6 +48,9 @@ public class GameCompany {
 
 	@Column(name = "contact_email_address")
 	private String contactEmailAddress;
+
+	@OneToMany(mappedBy = "gameCompany", cascade = CascadeType.ALL)
+	private List<GameSystem> gameSystems;
 
 	public Integer getId() {
 		return id;
@@ -164,5 +170,13 @@ public class GameCompany {
 
 	public void setContactEmailAddress(String contactEmailAddress) {
 		this.contactEmailAddress = contactEmailAddress;
+	}
+
+	public List<GameSystem> getGameSystems() {
+		return gameSystems;
+	}
+
+	public void setGameSystems(List<GameSystem> gameSystems) {
+		this.gameSystems = gameSystems;
 	}
 }

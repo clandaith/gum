@@ -7,9 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "game_plays")
@@ -32,6 +36,16 @@ public class GamePlay {
 	private Integer opponentId;
 
 	private boolean winner;
+
+	@JsonIgnore
+	@ManyToOne()
+	@JoinColumn(name = "user_id", insertable = false, updatable = false)
+	private User user;
+
+	@JsonIgnore
+	@ManyToOne()
+	@JoinColumn(name = "game_system_id", insertable = false, updatable = false)
+	private GameSystem gameSystem;
 
 	public Integer getId() {
 		return id;
@@ -81,4 +95,11 @@ public class GamePlay {
 		this.winner = winner;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }
