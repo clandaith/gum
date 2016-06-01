@@ -29,7 +29,7 @@
 	</bean>
 
 	<bean class="java.net.URI" id="dbUrl">
-		<!-- <constructor-arg value="postgresql://postgres:IAmRoot42@127.0.0.1:5432/blah" /> -->
-		<constructor-arg value="${DATABASE_URL}" />
+		<constructor-arg value="postgres://gum_main_user:LoveBrandon14!@localhost:5432/gum" />
+		<!-- <constructor-arg value="${DATABASE_URL}" /> -->
 	</bean>
 </beans>
