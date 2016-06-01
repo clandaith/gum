@@ -26,7 +26,7 @@ CREATE TABLE game_company
 	,state VARCHAR(250) NOT NULL 
 	,zip VARCHAR(250) NOT NULL 
 	,country VARCHAR(250) NOT NULL 
-	,phone_number INTEGER NOT NULL 
+	,phone_number BIGINT NOT NULL 
 	,website VARCHAR(500) NOT NULL 
 	,date_added TIMESTAMP NOT NULL
 	,date_updated TIMESTAMP NOT NULL
@@ -64,7 +64,7 @@ CREATE TABLE users
 	,state VARCHAR(250)  NULL 
 	,zip VARCHAR(250)  NULL 
 	,country VARCHAR(250)  NULL 
-	,phone_number INTEGER  NULL 
+	,phone_number BIGINT  NULL 
 	,date_added TIMESTAMP NOT NULL
 	,date_updated TIMESTAMP NOT NULL
 	,email_address VARCHAR(250) unique  NOT NULL 

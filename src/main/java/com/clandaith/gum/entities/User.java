@@ -33,7 +33,7 @@ public class User {
 	private String country;
 
 	@Column(name = "phone_number")
-	private Integer phoneNumber;
+	private Long phoneNumber;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_added")
@@ -127,11 +127,11 @@ public class User {
 		this.country = country;
 	}
 
-	public Integer getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
