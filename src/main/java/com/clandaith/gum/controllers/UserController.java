@@ -40,9 +40,7 @@ public class UserController {
 	@RequestMapping(value = "/user/{id}")
 	public User getOne(@PathVariable Integer id) {
 		LOGGER.info("get one user: " + id);
-
 		User user = userService.getUserById(id);
-
 		return user;
 	}
 }
