@@ -70,11 +70,22 @@ CREATE TABLE users
 	,date_updated TIMESTAMP NOT NULL
 	,email_address VARCHAR(250) unique  NOT NULL 
 	,description VARCHAR(4096)  NULL 
+	,enabled boolean NOT NULL default 'TRUE' 
 );
 create index users_index_username on users(username);
 
+-- Create Table: user_roles
+--------------------------------------------------------------------------------
+CREATE TABLE user_roles (
+ 	id SERIAL not null primary key
+	,username VARCHAR(250) NOT NULL
+	,role VARCHAR(45) NOT NULL
+	,CONSTRAINT user_roles_unique_values UNIQUE (username, role)
+);
+create index user_roles_index_username on user_roles(username);
 
-
+--------------------------------------------------------------------------------
+  
 -- Create Foreign Key: game_systems.game_company_id -> game_companies.id
 ALTER TABLE game_systems ADD CONSTRAINT FK_game_system_game_companies_id_game_companies_id FOREIGN KEY (game_company_id) REFERENCES game_companies(id) ON DELETE CASCADE;
 
@@ -90,6 +101,10 @@ ALTER TABLE game_plays ADD CONSTRAINT FK_game_plays_opponent_id_users_id FOREIGN
 -- Create Foreign Key: game_plays.game_system_id -> game_systems.id
 ALTER TABLE game_plays ADD CONSTRAINT FK_game_plays_game_systems_id_game_systems_id FOREIGN KEY (game_system_id) REFERENCES game_systems(id) ON DELETE CASCADE;
 
+
+-- Create Foreign Key: user_roles.user_id -> users.id
+ALTER TABLE user_roles ADD CONSTRAINT FK_user_roles_username_id FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE;
+
 -- Default Data
 
 --++++++++++++++++++++++++++++++++++++++++++
@@ -99,6 +114,11 @@ insert into users (username, password, first_name, last_name, address1, address2
 
 insert into users (username, password, first_name, last_name, address1, address2, city, state, zip, phone_number, country, email_address, description, date_added, date_updated) values 
 ('test', 'blork', 'Test', 'User', '123 Main St', 'Apt 1', 'NSL', 'UT', '84511', 8015558888, 'USA', 'test@clandaith.com', 'other desc', now(), now());
+
+--++++++++++++++++++++++++++++++++++++++++++
+-- User Roles
+INSERT INTO user_roles (username, role) VALUES ('test', 'ROLE_USER');
+INSERT INTO user_roles (username, role) VALUES ('clandaith', 'ROLE_ADMIN');
 
 --++++++++++++++++++++++++++++++++++++++++++
 -- Game Companies
