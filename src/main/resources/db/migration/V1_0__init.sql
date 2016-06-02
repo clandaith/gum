@@ -56,6 +56,7 @@ CREATE TABLE users
 (
 	id SERIAL not null primary key
 	,username VARCHAR(250) unique NOT NULL 
+	,password VARCHAR(250) NOT NULL 
 	,first_name VARCHAR(250)  NOT NULL 
 	,last_name VARCHAR(250)  NOT NULL 
 	,address1 VARCHAR(250)  NULL 
@@ -93,11 +94,11 @@ ALTER TABLE game_plays ADD CONSTRAINT FK_game_plays_game_systems_id_game_systems
 
 --++++++++++++++++++++++++++++++++++++++++++
 -- Users
-insert into users (username, first_name, last_name, address1, address2, city, state, zip, phone_number, country, email_address, description, date_added, date_updated) values 
-('clandaith', 'Troy', 'Davidson', '1874 S 900 E', '', 'Bountiful', 'UT', '84010', 8016631460, 'USA', 'clandaith@gmail.com', 'desc', now(), now());
+insert into users (username, password, first_name, last_name, address1, address2, city, state, zip, phone_number, country, email_address, description, date_added, date_updated) values 
+('clandaith', 'foobar', 'Troy', 'Davidson', '1874 S 900 E', '', 'Bountiful', 'UT', '84010', 8016631460, 'USA', 'clandaith@gmail.com', 'desc', now(), now());
 
-insert into users (username, first_name, last_name, address1, address2, city, state, zip, phone_number, country, email_address, description, date_added, date_updated) values 
-('test', 'Test', 'User', '123 Main St', 'Apt 1', 'NSL', 'UT', '84511', 8015558888, 'USA', 'test@clandaith.com', 'other desc', now(), now());
+insert into users (username, password, first_name, last_name, address1, address2, city, state, zip, phone_number, country, email_address, description, date_added, date_updated) values 
+('test', 'blork', 'Test', 'User', '123 Main St', 'Apt 1', 'NSL', 'UT', '84511', 8015558888, 'USA', 'test@clandaith.com', 'other desc', now(), now());
 
 --++++++++++++++++++++++++++++++++++++++++++
 -- Game Companies

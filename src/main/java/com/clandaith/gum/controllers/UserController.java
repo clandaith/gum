@@ -25,22 +25,21 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/v1/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public User saveUser(@RequestBody User user) {
 		LOGGER.info("save user");
 		return userService.saveUser(user);
 	}
 
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/v1/user", method = RequestMethod.GET)
 	public List<User> getAll() {
 		LOGGER.info("get all users");
 		return userService.getAllUsers();
 	}
 
-	@RequestMapping(value = "/user/{id}")
+	@RequestMapping(value = "/api/v1/user/{id}")
 	public User getOne(@PathVariable Integer id) {
 		LOGGER.info("get one user: " + id);
-		User user = userService.getUserById(id);
-		return user;
+		return userService.getUserById(id);
 	}
 }

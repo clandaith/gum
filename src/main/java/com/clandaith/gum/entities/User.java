@@ -22,6 +22,7 @@ public class User {
 	private Integer id;
 
 	private String username;
+	private String password;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -181,4 +182,11 @@ public class User {
 		this.gamePlays = gamePlays;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

@@ -25,25 +25,21 @@ public class GameCompanyController {
 		this.gameCompanyService = gameCompanyService;
 	}
 
-	@RequestMapping(value = "/gamecompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/v1/gamecompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public GameCompany saveGameCompany(@RequestBody GameCompany gameCompany) {
 		LOGGER.info("save game company");
 		return gameCompanyService.saveGameCompany(gameCompany);
 	}
 
-	@RequestMapping(value = "/gamecompany", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/v1/gamecompany", method = RequestMethod.GET)
 	public List<GameCompany> getAll() {
 		LOGGER.info("get all game companies");
 		return gameCompanyService.getAllGameCompanies();
 	}
 
-	@RequestMapping(value = "/gamecompany/{id}")
+	@RequestMapping(value = "/api/v1/gamecompany/{id}")
 	public GameCompany getOne(@PathVariable Integer id) {
 		LOGGER.info("get one game company");
-
-		GameCompany gameCompany = gameCompanyService.getGameCompanyById(id);
-
-		return gameCompany;
+		return gameCompanyService.getGameCompanyById(id);
 	}
-
 }

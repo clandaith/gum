@@ -25,25 +25,21 @@ public class GamePlayController {
 		this.gamePlayService = gamePlayService;
 	}
 
-	@RequestMapping(value = "/gameplay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/v1/gameplay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public GamePlay saveGamePlay(@RequestBody GamePlay gameCompany) {
 		LOGGER.info("save game play");
 		return gamePlayService.saveGamePlay(gameCompany);
 	}
 
-	@RequestMapping(value = "/gameplay", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/v1/gameplay", method = RequestMethod.GET)
 	public List<GamePlay> getAll() {
 		LOGGER.info("get all game plays");
 		return gamePlayService.getAllGamePlays();
 	}
 
-	@RequestMapping(value = "/gameplay/{id}")
+	@RequestMapping(value = "/api/v1/gameplay/{id}")
 	public GamePlay getOne(@PathVariable Integer id) {
 		LOGGER.info("get one game play: " + id);
-
-		GamePlay gameCompany = gamePlayService.getGamePlayById(id);
-
-		return gameCompany;
+		return gamePlayService.getGamePlayById(id);
 	}
-
 }

@@ -25,26 +25,25 @@ public class GameSystemController {
 		this.gameSystemService = gameSystemService;
 	}
 
-	@RequestMapping(value = "/gamesystem", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/v1/gamesystem", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public GameSystem saveGameSystem(@RequestBody GameSystem gameSystem) {
 		LOGGER.info("save game system");
 		return gameSystemService.saveGameSystem(gameSystem);
 	}
 
-	@RequestMapping(value = "/gamesystem", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/v1/gamesystem", method = RequestMethod.GET)
 	public List<GameSystem> getAll() {
 		LOGGER.info("get all game systems");
 		return gameSystemService.getAllGameSystems();
 	}
 
-	@RequestMapping(value = "/gamesystem/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/v1/gamesystem/{id}", method = RequestMethod.GET)
 	public GameSystem getOne(@PathVariable Integer id) {
 		LOGGER.info("get one game system");
-		GameSystem gameCompany = gameSystemService.getGameSystemById(id);
-		return gameCompany;
+		return gameSystemService.getGameSystemById(id);
 	}
 
-	@RequestMapping(value = "/gamesystem/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/api/v1/gamesystem/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Integer id) {
 		LOGGER.info("delete");
 		gameSystemService.deleteGameSystem(id);
