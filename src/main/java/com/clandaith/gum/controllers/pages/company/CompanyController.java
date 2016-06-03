@@ -1,4 +1,4 @@
-package com.clandaith.gum.controllers.pages;
+package com.clandaith.gum.controllers.pages.company;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +11,14 @@ import com.clandaith.gum.entities.User;
 import com.clandaith.gum.services.UserService;
 
 @Controller
-public class UsersPageController {
-	private static final Logger LOGGER = Logger.getLogger(UsersPageController.class);
+public class CompanyController {
+	private static final Logger LOGGER = Logger.getLogger(CompanyController.class);
 
 	@Autowired
 	UserService userService;
 
-	@RequestMapping("/users/user")
-	public String greeting(Model model) {
+	@RequestMapping("/companies/company")
+	public String company(Model model) {
 		LOGGER.info("We're in here! "
 						+ SecurityContextHolder.getContext().getAuthentication().getName());
 
@@ -26,6 +26,6 @@ public class UsersPageController {
 						.getAuthentication().getName());
 
 		model.addAttribute("name", user.getFirstName() + " " + user.getLastName());
-		return "user/user";
+		return "company/company";
 	}
 }
