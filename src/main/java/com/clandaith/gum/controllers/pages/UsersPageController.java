@@ -1,4 +1,4 @@
-package com.clandaith.gum.controllers;
+package com.clandaith.gum.controllers.pages;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

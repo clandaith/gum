@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.clandaith.gum.controllers.UserController;
+import com.clandaith.gum.controllers.api.v1.UserController;
 import com.clandaith.gum.entities.User;
 import com.clandaith.gum.services.UserService;
 
