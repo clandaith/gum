@@ -51,6 +51,8 @@ public class User {
 	private String emailAddress;
 	private String description;
 
+	private boolean enabled;
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<GamePlay> gamePlays;
 
@@ -188,5 +190,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }

@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByUsername(String username) {
-		return null;
+		return userRepository.findUserByUsername(username);
 	}
 
 	@Override
@@ -40,5 +40,4 @@ public class UserServiceImpl implements UserService {
 	public User saveUser(User user) {
 		return userRepository.save(user);
 	}
-
 }
