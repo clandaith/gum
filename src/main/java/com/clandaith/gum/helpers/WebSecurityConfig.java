@@ -20,10 +20,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/home", "/about").permitAll().anyRequest()
-						.authenticated().and().formLogin().loginPage("/login").usernameParameter("username")
-						.passwordParameter("password").permitAll().and().logout().permitAll();
+		http.authorizeRequests()
+						.antMatchers("/", "/home", "/about").permitAll()
+						.antMatchers("/manage/**").access("hasRole('ADMIN')")
+						.antMatchers("/users/**").access("hasRole('USER')")
+						.antMatchers("/companies/**").access("hasRole('COMPANY')")
+						.and()
+							.formLogin()
+								.loginPage("/login")
+									.usernameParameter("multipassName")
+									.passwordParameter("multipassIdent")
+									.permitAll()
+						.and().csrf()
+						.and().exceptionHandling().accessDeniedPage("/Access_Denied");
+						//.and().logout().permitAll();
 
+		//.anyRequest()
+		//.authenticated()
+		
 		// http.authorizeRequests()
 		// .antMatchers("/", "/home").permitAll()
 		// .antMatchers("/admin/**","/newuser").access("hasRole('ADMIN')")
