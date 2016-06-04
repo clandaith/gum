@@ -19,35 +19,44 @@ public class UsersPageController {
 	@Autowired
 	UserService userService;
 
+	// Gets currently logged in user
 	@RequestMapping("/users/user")
-	public String user(Model model) {
+	public String loggedInUser(Model model) {
 		LOGGER.info("We're in here! "
 						+ SecurityContextHolder.getContext().getAuthentication().getName());
 
-		// model.addAttribute("name", "Some random new user");
-		//
-		// User user = new User();
-		// try {
-		// user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication()
-		// .getName());
-		//
-		// model.addAttribute("name", user.getFirstName() + " " + user.getLastName());
-		// } catch (Exception e) {
-		// LOGGER.error("", e);
-		// }
-
 		model.addAttribute("user", new User());
+
+		User user = new User();
+		try {
+			user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication()
+							.getName());
+
+			model.addAttribute("user", user);
+		} catch (Exception e) {
+			LOGGER.error("", e);
+		}
+
+		LOGGER.info("Who are we: " + user.getFirstName());
+
 		return "user/user";
+	}
+
+	@RequestMapping("/users/userform")
+	public String userForm(Model model) {
+		model.addAttribute("user", new User());
+		return "user/userform";
 	}
 
 	@RequestMapping(value = "/users/user", method = RequestMethod.POST)
 	public String saveUser(User user) {
 		userService.saveUser(user);
-		return "redirect:/user/user/" + user.getId();
+		return "redirect:/users/user/" + user.getId();
 	}
 
+	// gets user by id
 	@RequestMapping("/users/user/{id}")
-	public String showProduct(@PathVariable Integer id, Model model) {
+	public String showUser(@PathVariable Integer id, Model model) {
 		model.addAttribute("user", userService.getUserById(id));
 		return "user/user";
 	}
