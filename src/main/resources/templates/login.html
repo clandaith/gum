@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <title>Spring Security Example </title>
-    </head>
-    <body>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+  
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/menu :: header"></th:block> /*/-->
         <div th:if="${param.error}">
             Invalid username and password.
         </div>
@@ -16,5 +18,8 @@
             <div><label> Password: <input type="password" name="multipassIdent"/> </label></div>
             <div><input type="submit" value="Sign In"/></div>
         </form>
-    </body>
+ 
+</div>
+ 
+</body>
 </html>

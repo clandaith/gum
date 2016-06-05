@@ -26,6 +26,6 @@ public class CompanyController {
 						.getAuthentication().getName());
 
 		model.addAttribute("name", user.getFirstName() + " " + user.getLastName());
-		return "company/company";
+		return "companies/company";
 	}
 }

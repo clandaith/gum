@@ -7,10 +7,10 @@
 <body>
 <div class="container">
     <!--/*/ <th:block th:include="fragments/menu :: header"></th:block> /*/-->
-        <h1>About</h1>
+	Company page
 
-        <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
- 
+    <p th:text="'Hello company, ' + ${name} + '!'" />
+
 </div>
  
 </body>

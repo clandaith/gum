@@ -39,13 +39,13 @@ public class UsersPageController {
 
 		LOGGER.info("Who are we: " + user.getFirstName());
 
-		return "user/user";
+		return "users/user";
 	}
 
 	@RequestMapping("/users/userform")
 	public String userForm(Model model) {
 		model.addAttribute("user", new User());
-		return "user/userform";
+		return "users/userform";
 	}
 
 	@RequestMapping(value = "/users/user", method = RequestMethod.POST)
@@ -58,6 +58,6 @@ public class UsersPageController {
 	@RequestMapping("/users/user/{id}")
 	public String showUser(@PathVariable Integer id, Model model) {
 		model.addAttribute("user", userService.getUserById(id));
-		return "user/user";
+		return "users/user";
 	}
 }
