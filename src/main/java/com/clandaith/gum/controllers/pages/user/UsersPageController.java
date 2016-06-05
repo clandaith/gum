@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.clandaith.gum.entities.User;
+import com.clandaith.gum.entities.UserRole;
+import com.clandaith.gum.entities.UserRole.ROLE;
+import com.clandaith.gum.services.UserRoleService;
 import com.clandaith.gum.services.UserService;
 
 @Controller
@@ -18,6 +21,9 @@ public class UsersPageController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	UserRoleService userRoleService;
 
 	// Gets currently logged in user
 	@RequestMapping("/users/user")
@@ -50,7 +56,14 @@ public class UsersPageController {
 
 	@RequestMapping(value = "/users/user", method = RequestMethod.POST)
 	public String saveUser(User user) {
+		user.setEnabled(true);
 		userService.saveUser(user);
+
+		UserRole userRole = new UserRole();
+		userRole.setUsername(user.getUsername());
+		userRole.setRole(ROLE.USER);
+		userRoleService.saveUserRole(userRole);
+
 		return "redirect:/users/user/" + user.getId();
 	}
 
