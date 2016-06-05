@@ -7,31 +7,37 @@
 
 <div class="container">
     <div th:fragment="header">
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
-                    
-	                    <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
-                    <!-- Logged in menu -->                    
-	                        <li><a href="#" th:href="@{/hello}">Hello</a></li>
-	                        <li><a href="#" th:href="@{/users/user}">User</a></li>
-	                        <li><a href="#" th:href="@{/companies/company}">Company</a></li>
-	                        <li><a href="#" th:href="@{/verify_logout}">Logout</a></li>
-					<!-- End logged in menu -->
-	                    </ul>
-					
-	                    <ul class="nav navbar-nav" sec:authorize="isAnonymous()">
-					<!-- Anonymous menu -->
-	                        <li><a href="#" th:href="@{/login}">Login</a></li>
-	                        <li><a href="#" th:href="@{/createuser}">Create User</a></li>
-					<!-- End anonymous menu -->
-	                    </ul>                    
-                    
-                </div>
-            </div>
-        </nav>
 
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">GUM</a>
+    </div>
+    <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#" th:href="@{/users/user}">User</a></li>
+          <li><a href="#" th:href="@{/companies/company}">Company</a></li>
+        </ul>
+      </li>
+      <li><a href="#" th:href="@{/hello}">Hello</a></li>
+      <li><a href="#" th:href="@{/verify_logout}">Logout</a></li>
+    </ul>
+    
+    
+    <ul class="nav navbar-nav" sec:authorize="isAnonymous()">
+      <li class="active"><a href="#" th:href="@{/}">Home</a></li>
+	  <li><a href="#" th:href="@{/login}">Login</a></li>
+	  <li><a href="#" th:href="@{/createuser}">Create User</a></li>
+    </ul>
+    
+  </div>
+</nav>
+
+    
         <div class="jumbotron">
             <div class="row text-center">
                 <div class="">
