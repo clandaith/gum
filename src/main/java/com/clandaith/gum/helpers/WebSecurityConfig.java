@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-						.antMatchers("/", "/home", "/resources/**", "/webjars/**").permitAll()
+						.antMatchers("/", "/home", "/resources/**", "/webjars/**", "/about", "/users/userform").permitAll()
 						.antMatchers("/manage/**").access("hasRole('ADMIN')")
 						.antMatchers("/users/**").access("hasRole('USER') or hasRole('ADMIN')")
 						.antMatchers("/companies/**").access("hasRole('COMPANY') or hasRole('ADMIN')")
@@ -33,8 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 									.passwordParameter("multipassIdent")
 									.permitAll()
 						.and().csrf()
-						.and().exceptionHandling().accessDeniedPage("/Access_Denied");
-						//.and().logout().permitAll();
+						.and().exceptionHandling().accessDeniedPage("/Access_Denied")
+						.and().logout().logoutSuccessUrl("/?logout").permitAll();
 
 		//.anyRequest()
 		//.authenticated()

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head lang="en">
+<head>
 
 </head>
 <body>
@@ -11,18 +11,23 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
-<div sec:authorize="isAuthenticated()">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" th:href="@{/users/user}">User</a></li>
-                        <li><a href="#" th:href="@{/users/userform}">Create User</a></li>
-                        <li><a href="#" th:href="@{/login?logout}">Logout</a></li>
-                    </ul>
-</div>
-<div sec:authorize="isAnonymous()">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" th:href="@{/login}">Login</a></li>
-                    </ul>
-</div>
+                    
+	                    <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+                    <!-- Logged in menu -->                    
+	                        <li><a href="#" th:href="@{/hello}">Hello</a></li>
+	                        <li><a href="#" th:href="@{/users/user}">User</a></li>
+	                        <li><a href="#" th:href="@{/companies/company}">Company</a></li>
+	                        <li><a href="#" th:href="@{/verify_logout}">Logout</a></li>
+					<!-- End logged in menu -->
+	                    </ul>
+					
+	                    <ul class="nav navbar-nav" sec:authorize="isAnonymous()">
+					<!-- Anonymous menu -->
+	                        <li><a href="#" th:href="@{/login}">Login</a></li>
+	                        <li><a href="#" th:href="@{/users/userform}">Create User</a></li>
+					<!-- End anonymous menu -->
+	                    </ul>                    
+                    
                 </div>
             </div>
         </nav>
