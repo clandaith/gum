@@ -17,11 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
-
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-						.antMatchers("/", "/home", "/resources/**", "/webjars/**", "/about", "/users/userform").permitAll()
+						.antMatchers("/", "/home", "/resources/**", "/webjars/**", "/about", "/createuser").permitAll()
 						.antMatchers("/manage/**").access("hasRole('ADMIN')")
 						.antMatchers("/users/**").access("hasRole('USER') or hasRole('ADMIN')")
 						.antMatchers("/companies/**").access("hasRole('COMPANY') or hasRole('ADMIN')")
@@ -35,18 +35,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						.and().csrf()
 						.and().exceptionHandling().accessDeniedPage("/Access_Denied")
 						.and().logout().logoutSuccessUrl("/?logout").permitAll();
-
-		//.anyRequest()
-		//.authenticated()
-		
-		// http.authorizeRequests()
-		// .antMatchers("/", "/home").permitAll()
-		// .antMatchers("/admin/**","/newuser").access("hasRole('ADMIN')")
-		// .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
-		// .and().formLogin().loginPage("/login")
-		// .usernameParameter("ssoId").passwordParameter("password")
-		// .and().csrf()
-		// .and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}
 
 	@Autowired
@@ -60,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Bean
-	public PasswordEncoder passwordEncoder() {
+	public PasswordEncoder passwordEncoder() {		
 		return new BCryptPasswordEncoder();
 	}
 }

@@ -61,7 +61,7 @@ public class UsersPageController {
 
 		UserRole userRole = new UserRole();
 		userRole.setUsername(user.getUsername());
-		userRole.setRole(ROLE.USER);
+		userRole.setRole(ROLE.ROLE_USER);
 		userRoleService.saveUserRole(userRole);
 
 		return "redirect:/users/user/" + user.getId();

@@ -21,18 +21,22 @@ public class UserRole {
 	private ROLE role;
 
 	public enum ROLE {
-		USER("ROLE_USER"), ADMIN("ROLE_ADMIN"), COMPANY("ROLE_COMPANY");
+		ROLE_USER, ROLE_ADMIN, ROLE_COMPANY
+	}
 
-		String roleName;
-
-		ROLE(String role) {
-			this.roleName = role;
-		}
-
-		public String getRoleName() {
-			return roleName;
-		}
-	};
+	// public enum ROLE {
+	// ROLE_USER("ROLE_USER"), ROLE_ADMIN("ROLE_ADMIN"), ROLE_COMPANY("ROLE_COMPANY");
+	//
+	// String roleName;
+	//
+	// ROLE(String role) {
+	// this.roleName = role;
+	// }
+	//
+	// public String getRoleName() {
+	// return roleName;
+	// }
+	// };
 
 	public Integer getId() {
 		return id;
