@@ -21,7 +21,7 @@ public class UserRole {
 	private ROLE role;
 
 	public enum ROLE {
-		USER("USER"), ADMIN("ADMIN");
+		USER("ROLE_USER"), ADMIN("ROLE_ADMIN"), COMPANY("ROLE_COMPANY");
 
 		String roleName;
 
