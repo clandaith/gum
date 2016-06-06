@@ -11,10 +11,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">GUM</a>
+      <a class="navbar-brand" href="/">GUM</a>
     </div>
     <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
-      <li class="active"><a href="#">Home</a></li>
+      <li class=""><a href="/">Home</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
         <span class="caret"></span></a>
@@ -40,21 +40,11 @@
     
         <div class="jumbotron">
             <div class="row text-center">
-                <div class="">
-                    <h2>GUM</h2>
-
-                    <h3>Game User Manager</h3>
-                </div>
+                <div class=""><h3>Game User Manager</h3></div>
             </div>
-            <!--
-            
             <div class="row text-center">
-                <img src="../../static/images/NewBannerBOOTS_2.png" width="400"
-                     th:src="@{/images/NewBannerBOOTS_2.png}"/>
-            </div>
-            
-            -->
-            
+                <img src="/images/space-header.jpg" width="400"/>
+            </div> 
         </div>
     </div>
 </div>
