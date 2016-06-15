@@ -1,3 +1,5 @@
+create SEQUENCE  hibernate_sequence;
+
 -- Create Table: game_plays
 --------------------------------------------------------------------------------
 CREATE TABLE game_plays
