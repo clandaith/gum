@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+  
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/menu :: header"></th:block> /*/-->
+
+    <p th:text="'Hello company, ' + ${name} + '!'" />
+
+
+        <div th:if="${param.created}">
+            <strong>Company created!</strong>
+        </div>
+
+        <h2>Companies List</h2>
+
+<div th:if="${not #lists.isEmpty(companies)}">
+        <p><a th:href="${'/companies/company/addedit/-1'}">Add New Company</a></p>
+        
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Website</th>
+                <th>Games</th>
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="company : ${companies}">
+                <td th:text="${company.id}">id</td>
+                <td th:text="${company.name}">name</td>
+                <td th:text="${company.website}">website</td>
+                <td>
+             	   <table class="table table-striped">
+                		<tr th:each="gameSystem : ${company.gameSystems}">
+                			<td><a th:href="${'/games/game/addedit?gsid=' + gameSystem.id}">
+                				<span th:text="${gameSystem.name}">name</span></a>
+                			</td>			            	
+                	    </tr>
+                	    <tr>
+                	    	<td>
+                	    		<a th:href="${'/games/game/addedit/-1'}">Add New Game System</a>
+                	    	</td>
+                	    </tr>
+                	</table>
+                </td>
+                <td><a th:href="${'/companies/company/addedit/' + company.id}">View</a></td>
+                <td><a th:href="${'/companies/company/delete/' + company.id}">Delete</a></td>
+            </tr>
+        </table>
+        
+        <p><a th:href="${'/companies/company/addedit/-1'}">Add New Company</a></p>
+ 
+    </div>
+</div>
+ 
+</body>
+</html>
