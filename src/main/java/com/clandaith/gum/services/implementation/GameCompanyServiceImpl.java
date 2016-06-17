@@ -33,4 +33,9 @@ public class GameCompanyServiceImpl implements GameCompanyService {
 	public GameCompany saveGameCompany(GameCompany gameCompany) {
 		return gameCompanyRepository.save(gameCompany);
 	}
+
+	@Override
+	public void deleteGameCompany(Integer id) {
+		gameCompanyRepository.delete(id);
+	}
 }

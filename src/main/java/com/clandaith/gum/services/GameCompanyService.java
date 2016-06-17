@@ -10,4 +10,6 @@ public interface GameCompanyService {
 	GameCompany getGameCompanyById(Integer id);
 
 	GameCompany saveGameCompany(GameCompany gameCompany);
+
+	void deleteGameCompany(Integer id);
 }
