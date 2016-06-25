@@ -15,12 +15,19 @@
     </div>
     <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
       <li class=""><a href="/">Home</a></li>
+      <li class=""><a href="/scoreboard">Scoreboard</a></li>
+      <li class=""><a href="/loggame">Log Game</a></li>
+      <li class=""><a href="/settings">Settings</a></li>
+      <li class=""><a href="/messages">Messages</a></li>
+      <li class=""><a href="/companies/company/1">Comapny Settings</a></li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#" th:href="@{/users/user}">User</a></li>
+          <li><a href="#" th:href="@{/users}">All Users</a></li>
           <li><a href="#" th:href="@{/companies/company}">Company</a></li>
+          <li><a href="#" th:href="@{/gamesystems/gamesystem}">Game Systems</a></li>
         </ul>
       </li>
       <li><a href="#" th:href="@{/hello}">Hello</a></li>

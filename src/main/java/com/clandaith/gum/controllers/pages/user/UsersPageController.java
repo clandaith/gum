@@ -28,15 +28,13 @@ public class UsersPageController {
 	// Gets currently logged in user
 	@RequestMapping("/users/user")
 	public String loggedInUser(Model model) {
-		LOGGER.info("We're in here! "
-						+ SecurityContextHolder.getContext().getAuthentication().getName());
+		LOGGER.info("We're in here! " + SecurityContextHolder.getContext().getAuthentication().getName());
 
 		model.addAttribute("user", new User());
 
 		User user = new User();
 		try {
-			user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication()
-							.getName());
+			user = userService.getUserByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
 
 			model.addAttribute("user", user);
 		} catch (Exception e) {
@@ -46,6 +44,14 @@ public class UsersPageController {
 		LOGGER.info("Who are we: " + user.getFirstName());
 
 		return "users/user";
+	}
+
+	// Gets currently logged in user
+	@RequestMapping("/users")
+	public String allUsers(Model model) {
+		model.addAttribute("users", userService.getAllUsers());
+
+		return "users/users";
 	}
 
 	@RequestMapping("/users/userform")
