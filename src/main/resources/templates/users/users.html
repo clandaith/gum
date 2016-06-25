@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+  
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/menu :: header"></th:block> /*/-->
+
+        <div th:if="${param.created}">
+            <strong>User edited</strong>
+        </div>
+
+        <div th:if="${param.deleted}">
+            <strong>User deleted</strong>
+        </div>
+
+        <h2>Users List</h2>
+
+<div th:if="${not #lists.isEmpty(users)}">
+        
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email Address</th>
+                <th>Games Played</th>
+                <!-- <th>Roles</th> -->
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}">Username</td>
+                <td th:text="${user.emailAddress}">Email Address</td>
+                <td th:text="${#lists.size(user.gamePlays)}">Games Played</td>
+               <!-- <td th:text="${user.roles}">Roles</td> -->
+                <td><a th:href="${'/users/user/' + user.id}">View</a></td>
+                <td><a th:href="${'/users/user/' + user.id}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+ 
+</body>
+</html>

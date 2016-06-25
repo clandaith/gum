@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head lang="en">
+  
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/menu :: header"></th:block> /*/-->
+
+    <p th:text="'Hello game system, ' + ${name} + '!'" />
+
+
+        <div th:if="${param.created}">
+            <strong>Game system edited/created!</strong>
+        </div>
+
+        <h2>Game Systems List</h2>
+
+<div th:if="${not #lists.isEmpty(gameSystems)}">
+        
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Website</th>
+                <th>Description</th>
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="gameSystem : ${gameSystems}">
+                <td th:text="${gameSystem.id}">id</td>
+                <td th:text="${gameSystem.name}">name</td>
+                <td th:text="${gameSystem.website}">website</td>
+                <td th:text="${gameSystem.description}">description</td>
+                <td><a th:href="${'/gamesystems/gamesystem/addedit/' + gameSystem.id}">View</a></td>
+                <td><a th:href="${'/gamesystems/gamesystem/delete/' + gameSystem.id}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+ 
+</body>
+</html>
