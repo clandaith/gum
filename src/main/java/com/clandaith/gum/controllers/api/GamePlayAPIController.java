@@ -26,9 +26,9 @@ public class GamePlayAPIController {
 	}
 
 	@RequestMapping(value = "/api/gameplay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public GamePlay saveGamePlay(@RequestBody GamePlay gameCompany) {
+	public GamePlay saveGamePlay(@RequestBody GamePlay gamePlay) {
 		LOGGER.info("save game play");
-		return gamePlayService.saveGamePlay(gameCompany);
+		return gamePlayService.saveGamePlay(gamePlay);
 	}
 
 	@RequestMapping(value = "/api/gameplay")
