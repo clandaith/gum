@@ -109,8 +109,4 @@ public class UserAPIControllerTest {
 		when(userService.getUserById(10)).thenReturn(user);
 		return user;
 	}
-
-	private void blah() {
-
-	}
 }
