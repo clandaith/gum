@@ -1,4 +1,4 @@
-package com.clandaith.gum;
+package com.clandaith.gum.controllers.api;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 
+import com.clandaith.gum.SpringBootWebApplication;
 import com.clandaith.gum.controllers.api.UserAPIController;
 import com.clandaith.gum.entities.User;
 import com.clandaith.gum.services.UserService;
@@ -77,9 +78,6 @@ public class UserAPIControllerTest {
 		stubServiceToReturnUser();
 		userController.delete(10);
 		verify(userService, times(1)).deleteUser(10);
-
-		// assertEquals("Returned user should be null", null,
-		// userController.getOne(10));
 	}
 
 	private User stubServiceToReturnSavedUser() {

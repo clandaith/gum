@@ -11,4 +11,6 @@ public interface GamePlayService {
 
 	GamePlay saveGamePlay(GamePlay GamePlay);
 
+	void deleteGamePlayedById(Integer id);
+
 }

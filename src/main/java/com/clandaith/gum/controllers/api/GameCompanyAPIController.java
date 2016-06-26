@@ -15,8 +15,8 @@ import com.clandaith.gum.entities.GameCompany;
 import com.clandaith.gum.services.GameCompanyService;
 
 @RestController
-public class GameCompanyController {
-	private static final Logger LOGGER = Logger.getLogger(GameCompanyController.class);
+public class GameCompanyAPIController {
+	private static final Logger LOGGER = Logger.getLogger(GameCompanyAPIController.class);
 
 	private GameCompanyService gameCompanyService;
 
@@ -25,21 +25,33 @@ public class GameCompanyController {
 		this.gameCompanyService = gameCompanyService;
 	}
 
-	@RequestMapping(value = "/api/v1/gamecompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/gamecompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public GameCompany saveGameCompany(@RequestBody GameCompany gameCompany) {
 		LOGGER.info("save game company");
 		return gameCompanyService.saveGameCompany(gameCompany);
 	}
 
-	@RequestMapping(value = "/api/v1/gamecompany", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/gamecompany", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public GameCompany updateGameCompany(@RequestBody GameCompany gameCompany) {
+		LOGGER.info("update game company");
+		return gameCompanyService.saveGameCompany(gameCompany);
+	}
+
+	@RequestMapping(value = "/api/gamecompany")
 	public List<GameCompany> getAll() {
 		LOGGER.info("get all game companies");
 		return gameCompanyService.getAllGameCompanies();
 	}
 
-	@RequestMapping(value = "/api/v1/gamecompany/{id}")
+	@RequestMapping(value = "/api/gamecompany/{id}")
 	public GameCompany getOne(@PathVariable Integer id) {
 		LOGGER.info("get one game company");
 		return gameCompanyService.getGameCompanyById(id);
+	}
+
+	@RequestMapping(value = "/api/gamecompany/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable Integer id) {
+		LOGGER.info("delete game company");
+		gameCompanyService.deleteGameCompany(id);
 	}
 }

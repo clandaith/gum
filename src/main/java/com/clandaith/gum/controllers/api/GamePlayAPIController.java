@@ -15,8 +15,8 @@ import com.clandaith.gum.entities.GamePlay;
 import com.clandaith.gum.services.GamePlayService;
 
 @RestController
-public class GamePlayController {
-	private static final Logger LOGGER = Logger.getLogger(GamePlayController.class);
+public class GamePlayAPIController {
+	private static final Logger LOGGER = Logger.getLogger(GamePlayAPIController.class);
 
 	private GamePlayService gamePlayService;
 
@@ -25,21 +25,27 @@ public class GamePlayController {
 		this.gamePlayService = gamePlayService;
 	}
 
-	@RequestMapping(value = "/api/v1/gameplay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/gameplay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public GamePlay saveGamePlay(@RequestBody GamePlay gameCompany) {
 		LOGGER.info("save game play");
 		return gamePlayService.saveGamePlay(gameCompany);
 	}
 
-	@RequestMapping(value = "/api/v1/gameplay", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/gameplay")
 	public List<GamePlay> getAll() {
 		LOGGER.info("get all game plays");
 		return gamePlayService.getAllGamePlays();
 	}
 
-	@RequestMapping(value = "/api/v1/gameplay/{id}")
+	@RequestMapping(value = "/api/gameplay/{id}")
 	public GamePlay getOne(@PathVariable Integer id) {
 		LOGGER.info("get one game play: " + id);
 		return gamePlayService.getGamePlayById(id);
+	}
+
+	@RequestMapping(value = "/api/gameplay/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable Integer id) {
+		LOGGER.info("delete game play: " + id);
+		gamePlayService.deleteGamePlayedById(id);
 	}
 }

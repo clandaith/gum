@@ -33,4 +33,10 @@ public class GamePlayServiceImpl implements GamePlayService {
 	public GamePlay saveGamePlay(GamePlay gamePlay) {
 		return gamePlayRepository.save(gamePlay);
 	}
+
+	@Override
+	public void deleteGamePlayedById(Integer id) {
+		// TODO Auto-generated method stub
+		gamePlayRepository.delete(id);
+	}
 }
