@@ -29,7 +29,6 @@ public class UsersPageController {
 	@RequestMapping("/users/user")
 	public String loggedInUser(Model model) {
 		LOGGER.info("We're in here! " + SecurityContextHolder.getContext().getAuthentication().getName());
-
 		model.addAttribute("user", new User());
 
 		User user = new User();
