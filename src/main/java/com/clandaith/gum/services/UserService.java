@@ -11,6 +11,10 @@ public interface UserService {
 
 	User getUserByUsername(String username);
 
+	User saveUser(User user, boolean encryptePassword);
+
 	User saveUser(User user);
+
+	void deleteUser(Integer id);
 
 }

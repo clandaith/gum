@@ -16,8 +16,8 @@ import com.clandaith.gum.services.UserRoleService;
 import com.clandaith.gum.services.UserService;
 
 @Controller
-public class UsersPageController {
-	private static final Logger LOGGER = Logger.getLogger(UsersPageController.class);
+public class UserModelController {
+	private static final Logger LOGGER = Logger.getLogger(UserModelController.class);
 
 	@Autowired
 	UserService userService;
@@ -53,12 +53,6 @@ public class UsersPageController {
 		return "users/users";
 	}
 
-	@RequestMapping("/users/userform")
-	public String userForm(Model model) {
-		model.addAttribute("user", new User());
-		return "users/userform";
-	}
-
 	@RequestMapping(value = "/users/user", method = RequestMethod.POST)
 	public String saveUser(User user) {
 		user.setEnabled(true);
@@ -78,4 +72,21 @@ public class UsersPageController {
 		model.addAttribute("user", userService.getUserById(id));
 		return "users/user";
 	}
+
+	// +++++++++++++++++++++++++++
+
+	@RequestMapping("/createuser")
+	public String userForm1(Model model) {
+		model.addAttribute("user", new User());
+		return "createuser";
+	}
+
+	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
+	public String saveUser1(User user) {
+
+		userService.saveUser(user);
+
+		return "redirect:/login?created";
+	}
+
 }

@@ -10,24 +10,24 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.clandaith.gum.controllers.api.v1.UserController;
+import com.clandaith.gum.controllers.api.UserAPIController;
 import com.clandaith.gum.entities.User;
 import com.clandaith.gum.services.UserService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @SpringApplicationConfiguration(SpringBootWebApplication.class)
 public class UserControllerTest {
 	@Mock
 	private UserService userService;
 
-	private UserController userController;
+	private UserAPIController userController;
 
 	@Before
 	public void setUp() {
-		userController = new UserController();
+		userController = new UserAPIController();
 		userController.setService(userService);
 	}
 

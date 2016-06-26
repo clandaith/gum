@@ -1,4 +1,4 @@
-package com.clandaith.gum.controllers.api.v1;
+package com.clandaith.gum.controllers.api;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import com.clandaith.gum.entities.User;
 import com.clandaith.gum.services.UserService;
 
 @RestController
-public class UserController {
-	private static final Logger LOGGER = Logger.getLogger(UserController.class);
+public class UserAPIController {
+	private static final Logger LOGGER = Logger.getLogger(UserAPIController.class);
 
 	private UserService userService;
 

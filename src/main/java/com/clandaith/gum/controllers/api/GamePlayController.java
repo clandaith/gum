@@ -1,4 +1,4 @@
-package com.clandaith.gum.controllers.api.v1;
+package com.clandaith.gum.controllers.api;
 
 import java.util.List;
 
