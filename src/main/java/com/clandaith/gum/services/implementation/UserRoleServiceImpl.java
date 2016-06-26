@@ -12,8 +12,8 @@ public class UserRoleServiceImpl implements UserRoleService {
 	private UserRoleRepository userRoleRepository;
 
 	@Autowired
-	public void setRepository(UserRoleRepository sr) {
-		this.userRoleRepository = sr;
+	public void setRepository(UserRoleRepository urr) {
+		this.userRoleRepository = urr;
 	}
 
 	@Override
@@ -29,5 +29,11 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@Override
 	public UserRole saveUserRole(UserRole userRole) {
 		return userRoleRepository.save(userRole);
+	}
+
+	@Override
+	public void deleteUserRole(Integer id) {
+		userRoleRepository.delete(id);
+
 	}
 }

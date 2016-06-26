@@ -10,4 +10,5 @@ public interface UserRoleService {
 
 	UserRole saveUserRole(UserRole userRole);
 
+	void deleteUserRole(Integer id);
 }

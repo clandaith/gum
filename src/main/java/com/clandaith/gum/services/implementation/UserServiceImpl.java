@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.clandaith.gum.entities.User;
-import com.clandaith.gum.entities.UserRole;
-import com.clandaith.gum.entities.UserRole.ROLE;
 import com.clandaith.gum.repositories.UserRepository;
 import com.clandaith.gum.services.UserRoleService;
 import com.clandaith.gum.services.UserService;
@@ -64,12 +62,7 @@ public class UserServiceImpl implements UserService {
 
 		userRepository.save(user);
 
-		UserRole userRole = new UserRole();
-		userRole.setUsername(user.getUsername());
-		userRole.setRole(ROLE.ROLE_USER);
-		userRoleService.saveUserRole(userRole);
-
-		LOGGER.info("User and role created: " + user.getId() + " :: " + userRole.getId());
+		LOGGER.info("User created: " + user.getId());
 
 		return user;
 	}

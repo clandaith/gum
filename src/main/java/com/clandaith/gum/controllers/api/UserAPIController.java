@@ -25,21 +25,33 @@ public class UserAPIController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/api/v1/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/api/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public User saveUser(@RequestBody User user) {
 		LOGGER.info("save user");
 		return userService.saveUser(user);
 	}
 
-	@RequestMapping(value = "/api/v1/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/user", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public User updateUser(@RequestBody User user) {
+		LOGGER.info("save user");
+		return userService.saveUser(user);
+	}
+
+	@RequestMapping(value = "/api/user", method = RequestMethod.GET)
 	public List<User> getAll() {
 		LOGGER.info("get all users");
 		return userService.getAllUsers();
 	}
 
-	@RequestMapping(value = "/api/v1/user/{id}")
+	@RequestMapping(value = "/api/user/{id}")
 	public User getOne(@PathVariable Integer id) {
 		LOGGER.info("get one user: " + id);
 		return userService.getUserById(id);
+	}
+
+	@RequestMapping(value = "/api/user/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable Integer id) {
+		LOGGER.info("delete user: " + id);
+		userService.deleteUser(id);
 	}
 }

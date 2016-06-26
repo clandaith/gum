@@ -19,7 +19,7 @@ import com.clandaith.gum.services.UserService;
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringApplicationConfiguration(SpringBootWebApplication.class)
-public class UserControllerTest {
+public class UserAPIControllerTest {
 	@Mock
 	private UserService userService;
 
@@ -32,8 +32,8 @@ public class UserControllerTest {
 	}
 
 	@Test
-	public void shouldCreateUser() throws Exception {
-		final User savedUser = stubServiceToReturnStoredUser();
+	public void saveUser() throws Exception {
+		final User savedUser = stubServiceToReturnSavedUser();
 		final User user = new User();
 		user.setUsername("someusername");
 		user.setFirstName("firstName");
@@ -45,7 +45,27 @@ public class UserControllerTest {
 		assertEquals("Returned user should come from the service", savedUser, returnedUser);
 	}
 
-	private User stubServiceToReturnStoredUser() {
+	@Test
+	public void updateUser() {
+		userController.updateUser(null);
+	}
+
+	@Test
+	public void getAll() {
+		userController.getAll();
+	}
+
+	@Test
+	public void getOne() {
+		userController.getOne(1);
+	}
+
+	@Test
+	public void deleteUser() {
+		userController.delete(1);
+	}
+
+	private User stubServiceToReturnSavedUser() {
 		final User user = new User();
 		when(userService.saveUser(any(User.class))).thenReturn(user);
 		return user;
