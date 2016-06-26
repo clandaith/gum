@@ -33,7 +33,7 @@ public class UserAPIController {
 
 	@RequestMapping(value = "/api/user", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public User updateUser(@RequestBody User user) {
-		LOGGER.info("save user");
+		LOGGER.info("update user " + user.getId());
 		return userService.saveUser(user);
 	}
 
