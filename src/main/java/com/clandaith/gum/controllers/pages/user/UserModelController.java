@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.clandaith.gum.entities.User;
-import com.clandaith.gum.entities.UserRole;
-import com.clandaith.gum.entities.UserRole.ROLE;
+import com.clandaith.gum.model.UserModel;
 import com.clandaith.gum.services.UserRoleService;
 import com.clandaith.gum.services.UserService;
 
@@ -55,14 +54,7 @@ public class UserModelController {
 
 	@RequestMapping(value = "/users/user", method = RequestMethod.POST)
 	public String saveUser(User user) {
-		user.setEnabled(true);
-		userService.saveUser(user);
-
-		UserRole userRole = new UserRole();
-		userRole.setUsername(user.getUsername());
-		userRole.setRole(ROLE.ROLE_USER);
-		userRoleService.saveUserRole(userRole);
-
+		user = new UserModel().createNewUser(userService, userRoleService, user);
 		return "redirect:/users/user/" + user.getId();
 	}
 
@@ -76,13 +68,13 @@ public class UserModelController {
 	// +++++++++++++++++++++++++++
 
 	@RequestMapping("/createuser")
-	public String userForm1(Model model) {
+	public String createUser(Model model) {
 		model.addAttribute("user", new User());
 		return "createuser";
 	}
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
-	public String saveUser1(User user) {
+	public String saveCreateUser(User user) {
 
 		userService.saveUser(user);
 

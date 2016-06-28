@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clandaith.gum.entities.User;
+import com.clandaith.gum.services.UserRoleService;
 import com.clandaith.gum.services.UserService;
 
 @RestController
@@ -19,16 +20,24 @@ public class UserAPIController {
 	private static final Logger LOGGER = Logger.getLogger(UserAPIController.class);
 
 	private UserService userService;
+	private UserRoleService userRoleService;
 
 	@Autowired
 	public void setService(UserService userService) {
 		this.userService = userService;
 	}
 
+	@Autowired
+	public void setS1(UserRoleService userRoleService) {
+		this.userRoleService = userRoleService;
+	}
+
 	@RequestMapping(value = "/api/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public User saveUser(@RequestBody User user) {
 		LOGGER.info("save user");
-		return userService.saveUser(user);
+		return userService.saveUser(user);// new
+											// UserModel().createNewUser(userService,
+											// userRoleService, user);
 	}
 
 	@RequestMapping(value = "/api/user", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)

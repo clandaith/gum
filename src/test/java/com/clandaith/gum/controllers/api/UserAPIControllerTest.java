@@ -17,8 +17,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 
 import com.clandaith.gum.SpringBootWebApplication;
-import com.clandaith.gum.controllers.api.UserAPIController;
 import com.clandaith.gum.entities.User;
+import com.clandaith.gum.services.UserRoleService;
 import com.clandaith.gum.services.UserService;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -27,12 +27,16 @@ public class UserAPIControllerTest {
 	@Mock
 	private UserService userService;
 
+	@Mock
+	private UserRoleService userRoleService;
+
 	private UserAPIController userController;
 
 	@Before
 	public void setUp() {
 		userController = new UserAPIController();
 		userController.setService(userService);
+		userController.setS1(userRoleService);
 	}
 
 	@Test

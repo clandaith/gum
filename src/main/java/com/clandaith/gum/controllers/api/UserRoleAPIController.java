@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clandaith.gum.entities.UserRole;
+import com.clandaith.gum.entities.UserRole.ROLE;
 import com.clandaith.gum.services.UserRoleService;
 
 @RestController
@@ -24,13 +25,24 @@ public class UserRoleAPIController {
 	}
 
 	@RequestMapping(value = "/api/userrole", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UserRole saveUser(@RequestBody UserRole userRole) {
+	public UserRole saveUserRole(@RequestBody UserRole userRole) {
 		LOGGER.info("save user role");
 
 		// UserRole userRole = new UserRole();
 		// userRole.setUsername(user.getUsername());
 		// userRole.setRole(ROLE.ROLE_USER);
 		// userRoleService.saveUserRole(userRole);
+
+		return userRoleService.saveUserRole(userRole);
+	}
+
+	@RequestMapping(value = "/api/userrole/{username}/{userRole}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public UserRole saveUserRoleViaUrl(@PathVariable String username, @PathVariable ROLE role) {
+		LOGGER.info("save user role");
+
+		UserRole userRole = new UserRole();
+		userRole.setUsername(username);
+		userRole.setRole(role);
 
 		return userRoleService.saveUserRole(userRole);
 	}
